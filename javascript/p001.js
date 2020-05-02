@@ -1,3 +1,27 @@
+/*
+ * Solution to Project Euler problem 001
+ * https://projecteuler.net/problem=001
+ *
+ */
+
+/**
+ * Solution algorithm:
+ * We can imagine sum of numbers multiplies of 3
+ * as arithmetic progression like 3 * (1 + 2 + 3 + 4 + 5 ...)
+ * and multiplies of 5 like 5 * (1 + 2 + 3 + 4 + 5 ...)
+ * But for find sum of number multiplies of 3 or 5 we can imagine like
+ * 3 * (1 + 2 + 3 + 4 + 5 ...) + 5 * (1 + 2 + 3 + 4 + 5 ...) - 15 (1 + 2 + 3 + 4 + 5 ...)
+ * For calculate sum of arithmetic progression for n first items we can use formula
+ * from wiki https://en.wikipedia.org/wiki/Arithmetic_progression
+ */
+
+/**
+ *
+ * @param d
+ * @param n
+ * @param a1
+ * @return {bigint}
+ */
 const getNumSeqSum = (d, n, a1 = 0) => {
   d = BigInt(d);
   n = BigInt(n);
@@ -23,7 +47,7 @@ const main = (n) => {
 };
 
 /**
- * expected
+ * expected 233168
  *
  */
 const res = main(1000);
