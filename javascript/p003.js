@@ -18,6 +18,7 @@
 /**
  *
  * @param {number} n
+ * @return {number}
  */
 const main = (n) => {
   while (n %  2 === 0) {
