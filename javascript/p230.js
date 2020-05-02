@@ -1,5 +1,5 @@
 /*
- * Solution to Project Euler problem 230
+ * Solution to Project Euler problem 230. Fibonacci Words
  * https://projecteuler.net/problem=230
  *
  */
@@ -27,21 +27,21 @@
  *
  * @param {string} a - string a
  * @param {string} b - string b
- * @param {number} step - number of step
- * @return {number}
+ * @param {BigInt} step - number of step
+ * @return {BigInt}
  */
 const findLengthForStep = (a, b, step) => {
-  if (step === 1) {
-    return a.length;
+  if (step === 1n) {
+    return BigInt(a.length);
   }
 
-  if (step === 2) {
-    return b.length;
+  if (step === 2n) {
+    return BigInt(b.length);
   }
 
-  let aLen = a.length;
-  let bLen = b.length;
-  let i = 2;
+  let aLen = BigInt(a.length);
+  let bLen = BigInt(b.length);
+  let i = 2n;
 
   while (i < step) {
     [aLen, bLen] = [bLen, aLen + bLen];
@@ -56,18 +56,18 @@ const findLengthForStep = (a, b, step) => {
  *
  * @param {string} a - string a
  * @param {string} b - string b
- * @param {number} n - index of searching char
- * @return {number}
+ * @param {BigInt} n - index of searching char
+ * @return {BigInt}
  */
 const findStep = (a, b, n) => {
-  if (n === 1) {
-    return 1;
+  if (n === 1n) {
+    return 1n;
   }
 
-  let aLen = a.length;
-  let bLen = b.length;
-  let c = 0;
-  let res = 2;
+  let aLen = BigInt(a.length);
+  let bLen = BigInt(b.length);
+  let c = 0n;
+  let res = 2n;
 
   while (c < n) {
     c = aLen + bLen;
@@ -79,17 +79,18 @@ const findStep = (a, b, n) => {
 };
 
 /**
+ * find value on specified Fibbonacci string index
  *
  * @param {string} a - string a
  * @param {string} b - string b
- * @param {number} n - index of searching char
+ * @param {BigInt} n - index of searching char
  * @return {string}
  */
-const main = (a, b, n) => {
+const findFiboVal = (a, b, n) => {
   let step = findStep(a, b, n);
 
   while (step > 2) {
-    const l = findLengthForStep(a, b, step - 2);
+    const l = findLengthForStep(a, b, step - 2n);
 
     if (n > l) {
       n = n - l;
@@ -99,20 +100,33 @@ const main = (a, b, n) => {
     step--;
   }
 
-  if (step === 1) {
-    return a[n - 1];
+  if (step === 1n) {
+    return a[n - 1n];
   } else {
-    return b[n - 1];
+    return b[n - 1n];
   }
 };
 
-/**
- * expected result 8
- */
-const res = main(
-  '1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679',
-  '8214808651328230664709384460955058223172535940812848111745028410270193852110555964462294895493038196',
-  104683731294243150
-);
 
-console.log('result:', res);
+/**
+ * expected result 850481152593119296
+ */
+const main = () => {
+  let sum = 0n;
+
+  for (let i = 0n; i <= 17n; i++) {
+    const index = (127n + 19n * i) * 7n ** i;
+    const val = findFiboVal(
+      '1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679',
+      '8214808651328230664709384460955058223172535940812848111745028410270193852110555964462294895493038196',
+      index
+    );
+
+    sum += 10n ** i * BigInt(val);
+  }
+
+  return sum;
+}
+
+
+console.log('result:', main());

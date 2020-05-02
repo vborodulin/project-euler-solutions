@@ -1,5 +1,5 @@
 /*
- * Solution to Project Euler problem 003
+ * Solution to Project Euler problem 003. Largest prime factor
  * https://projecteuler.net/problem=003
  *
  */

@@ -1,5 +1,5 @@
 /*
- * Solution to Project Euler problem 002
+ * Solution to Project Euler problem 002. Even Fibonacci numbers
  * https://projecteuler.net/problem=002
  *
  */

@@ -1,5 +1,5 @@
 /*
- * Solution to Project Euler problem 001
+ * Solution to Project Euler problem 001. Multiples of 3 and 5
  * https://projecteuler.net/problem=001
  *
  */
